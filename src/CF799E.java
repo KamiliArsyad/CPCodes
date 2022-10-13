@@ -2,15 +2,6 @@ import java.util.Scanner;
 
 public class CF799E {
   public static int soln(int[] input, int target) {
-    if (countOne(input) < targer)
-    
-    int i = 0;
-    int j = input.length - 1;
-
-    while (i < j) {
-      
-    }
-
     return 0;
   }
 
