@@ -92,24 +92,33 @@ public class CF827E {
         }
     }
 
-    // Find the smallest index of the element in a that is greater than x. There can be duplicates
-    public static int binarySearch(int a[], int x) {
-        int low = 0;
-        int high = a.length - 1;
-        int mid = low + (high - low) / 2;
-
-        while (low <= high) {
-            if (mid < a.length - 1 && a[mid] <= x && a[mid + 1] > x) {
-                break;
-            } else if (a[mid] > x) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
-            mid = low + (high - low) / 2;
+    public static int booleanCondition(int a, int b) {
+        if (a < b) {
+            return -1;
+        } else if (a > b) {
+            return 1;
+        } else {
+            return 0;
         }
+    }
 
-        return low;
+    /**
+     * Variant 1: Binary search that returns the index of the element right before the first element in
+     * the array that is greater than the given value.
+     * If no element is greater than the given value, the index of the last element is returned.
+     */
+    public static int binarySearch(int[] a, int value) {
+        int left = -1;
+        int right = a.length;
+        while (right - left > 1) {
+            int middle = left + (right - left) / 2;
+            if (booleanCondition(a[middle], value) <= 0) {
+                left = middle;
+            } else {
+                right = middle;
+            }
+        }
+        return left;
     }
 
     // transform a into the maximum element of a before each element
