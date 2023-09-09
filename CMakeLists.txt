@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.16)
+set(CMAKE_CXX_STANDARD 17)
+project(CF)
+# add separate executable for every file in ./cpp
+file(GLOB SOURCES "cpp/*.cpp")
+foreach (SOURCE ${SOURCES})
+    get_filename_component(EXECUTABLE ${SOURCE} NAME_WE)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+    add_executable(${EXECUTABLE} ${SOURCE})
+endforeach ()
+# add separate executable for every file in ./cpp/premade
+file(GLOB SOURCES "cpp/premade/*.cpp")
+foreach (SOURCE ${SOURCES})
+    get_filename_component(EXECUTABLE ${SOURCE} NAME_WE)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin/premade)
+    add_executable(${EXECUTABLE} ${SOURCE})
+endforeach ()
